@@ -1,0 +1,28 @@
+i, .link{
+    cursor: pointer;
+}
+.locked{
+    background-color: lightgray;
+}
+.row{
+    margin: 10px 0 10px 0   
+}
+.row, span{
+    height: 20px;
+}
+.ng-invalid{
+    border: #b93434 1px solid;
+}
+header{
+    width: 100%;
+}
+h1{
+    border-bottom: lightgray 2px solid;
+    padding: 5px;
+}
+.glyphicon{
+    font-size:20px;
+}
+.container{
+    height: 100%;
+}

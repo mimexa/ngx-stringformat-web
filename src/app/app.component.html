@@ -1,0 +1,85 @@
+<header>
+  <h1>ngx-stringformat 1.0.3</h1>
+</header>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p>
+        Useful pipe for <a href="https://angular.io/">Angular</a> inspired by the <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#format(java.lang.String,%20java.lang.Object...)">java.util.String.format()</a>        java method.
+      </p>
+      <p>
+        The npm package ngx-stringformat API and source code are available here
+        <ul>
+          <li><a href="https://github.com/mimexa/ngx-stringformat">github/ngx-stringformat</a></li>
+          <li><a href="https://www.npmjs.com/package/ngx-stringformat">npm/ngx-stringformat</a></li>
+        </ul>
+    </div>
+  </div>
+  <div class="panel panel-default test-form">
+    <div class="panel-heading">
+      Try the ngx-stringformat angular pipe online
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
+          <label for="pattern" ngbTooltip="Tooltip on top" placement="top">Pattern</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+          <input required minlength="1" (keyup)="evaluate()" type="text" placeholder="Enter pattern" [(ngModel)]="pattern" #patternInput="ngModel">
+          <span class="label label-danger" *ngIf="patternInput.errors!=null">Required</span>
+        </div>
+      </div>
+      <div *ngIf="args.length==0" class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="font-weight: bold">
+          <span class="link" (click)="insert(0)">Arguments</span>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="font-weight: bold">
+          <i class="glyphicon glyphicon-plus-sign" (click)="insert(0)" title="Insert argument"></i>
+        </div>
+      </div>
+      <div *ngFor="let arg of args; let i =index" class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <label for="arg{{i}}">Argument {{i+1}}</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+          <input type="text" id="arg{{i}}" (keyup)="evaluate()" placeholder="Enter argument" [(ngModel)]="arg.value" />
+          <i class="glyphicon glyphicon-plus-sign" (click)="insert(i)" data-original-title="Insert argument"></i>
+          <i class="glyphicon glyphicon-minus-sign" data-toggle="tooltip" (click)="remove(i)" data-original-title="Remove argument"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <label>Html expression</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+          <code>
+            {{'{{'}} '{{pattern}}' {{' | stringFormat '}}
+            <span *ngFor="let arg of args; let i =index"> : '{{arg.value}}' </span> {{'}'+'}'}}
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <label>Typescript expression</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+          <code>
+              this.stringFormar('{{pattern}}'
+              <span *ngFor="let arg of args; let i =index">
+                , '{{arg.value}}' 
+              </span>
+              )
+          </code>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          <label>Evaluation</label>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+          <code style="white-space: pre;">{{result}}</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
